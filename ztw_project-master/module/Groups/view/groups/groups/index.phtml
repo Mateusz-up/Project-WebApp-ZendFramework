@@ -1,0 +1,33 @@
+<?php
+
+$title = 'Groups';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('groups', ['action' => 'add']) ?>">Add new group</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Course</th>
+    <th>Year</th>
+    <th>Type</th>
+    <th>ID Lecturer</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($groups as $group) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($group->name) ?></td>
+        <td><?= $this->escapeHtml($group->course) ?></td>
+        <td><?= $this->escapeHtml($group->year) ?></td>
+        <td><?= $this->escapeHtml($group->type) ?></td>
+        <td><?= $this->escapeHtml($group->idlecturer) ?></td>
+        <td>
+            <a href="<?= $this->url('groups', ['action' => 'edit', 'id' => $group->id]) ?>">Edit</a>
+            <a href="<?= $this->url('groups', ['action' => 'delete', 'id' => $group->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

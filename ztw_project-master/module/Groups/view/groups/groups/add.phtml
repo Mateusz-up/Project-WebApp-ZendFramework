@@ -1,0 +1,74 @@
+<?php
+$title = 'Add new group';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+$name2 = $form->get('name');
+$name2->setAttribute('class', 'form-control');
+$name2->setAttribute('placeholder', 'Name group');
+
+
+$course2 = $form->get('course');
+$course2->setAttribute('class', 'form-control');
+$course2->setAttribute('placeholder', 'course');
+
+$year2 = $form->get('year');
+$year2->setAttribute('class', 'form-control');
+$year2->setAttribute('placeholder', 'year');
+
+$type2 = $form->get('type');
+$type2->setAttribute('class', 'form-control');
+$type2->setAttribute('placeholder', 'type');
+
+$idlecturer2 = $form->get('idlecturer');
+$idlecturer2->setAttribute('class', 'form-control');
+$idlecturer2->setAttribute('placeholder', 'idlecturer');
+
+
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('groups', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+<div class="form-group">
+    <?= $this->formLabel($name2) ?>
+    <?= $this->formElement($name2) ?>
+    <?= $this->formElementErrors()->render($name2, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($course2) ?>
+    <?= $this->formElement($course2) ?>
+    <?= $this->formElementErrors()->render($course2, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($year2) ?>
+    <?= $this->formElement($year2) ?>
+    <?= $this->formElementErrors()->render($year2, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($type2) ?>
+    <?= $this->formElement($type2) ?>
+    <?= $this->formElementErrors()->render($type2, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($idlecturer2) ?>
+    <?= $this->formElement($idlecturer2) ?>
+    <?= $this->formElementErrors()->render($idlecturer2, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

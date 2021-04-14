@@ -1,0 +1,58 @@
+<?= $this->doctype() ?>
+
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('AnkietaUP')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink((['rel' => 'shortcut icon', 'type' => 'i/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logoa.png']) )
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/styles.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->                     
+        <?= $this->inlineScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.3.1.min.js'))
+        ?>
+    </head>
+    <body>
+		<nav class="navbar navbar-expand-md fixed-top navbar-dark navd">
+			<a class="navbar-brand abs" href="<?= $this->url('home') ?>"><img class="logo" src="<?= $this->basePath('img/logo_sm.png') ?>"/></a>
+			<div class="menu-wrap order-1">
+			<input type="checkbox" class="toggler">
+			<div class="hamburger"><div></div></div>
+			<div class="menu">
+			  <div>
+				<div>
+                    <?php // update to: ?>
+                    <?= $this->navigation('navigation')
+                        ->menu()
+                        ->setMinDepth(0)
+                        ->setMaxDepth(0)
+                        ->setUlClass('nav navbar-nav') ?>
+				</div>
+			  </div>
+			</div>
+		  </div>
+				<ul class="navbar-nav ml-auto order-3">
+					<li class="nav-item">
+						<a class="nav-link" style="color:black;" href="#" data-target="#myModal" data-toggle="modal">Zaloguj się</a>
+					</li>
+				</ul>
+		</nav>
+        <?php // in module/Application/view/layout/layout.phtml: ?>
+        <div class="main">
+            <?php // Update to: ?>
+            <?= $this->content ?>
+        </div>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

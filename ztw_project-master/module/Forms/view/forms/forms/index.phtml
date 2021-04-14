@@ -1,0 +1,31 @@
+<?php
+
+$title = 'Forms';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('forms', ['action' => 'add']) ?>">Add new form</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Dateadd</th>
+    <th>Author</th>
+    <th>Status</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($forms as $form) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($form->name) ?></td>
+        <td><?= $this->escapeHtml($form->dateadd) ?></td>
+        <td><?= $this->escapeHtml($form->author) ?></td>
+        <td><?= $this->escapeHtml($form->status) ?></td>
+        <td>
+            <a href="<?= $this->url('forms', ['action' => 'edit', 'id' => $form->id]) ?>">Edit</a>
+            <a href="<?= $this->url('forms', ['action' => 'delete', 'id' => $form->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

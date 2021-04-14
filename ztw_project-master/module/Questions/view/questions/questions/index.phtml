@@ -1,0 +1,27 @@
+<?php
+
+$title = 'Questions';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('questions', ['action' => 'add']) ?>">Add new question</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($questions as $question) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($question->name) ?></td>
+        <td><?= $this->escapeHtml($question->type) ?></td>
+        <td>
+            <a href="<?= $this->url('questions', ['action' => 'edit', 'id' => $question->id]) ?>">Edit</a>
+            <a href="<?= $this->url('questions', ['action' => 'delete', 'id' => $question->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

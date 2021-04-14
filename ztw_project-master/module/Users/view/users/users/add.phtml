@@ -1,0 +1,71 @@
+<?php
+$title = 'Add new user';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+// This provides a default CSS class and placeholder text for the title element:
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$surname = $form->get('surname');
+$surname->setAttribute('class', 'form-control');
+$surname->setAttribute('placeholder', 'Surname');
+
+$email = $form->get('email');
+$email->setAttribute('class', 'form-control');
+$email->setAttribute('placeholder', 'email');
+
+$role = $form->get('role');
+$role->setAttribute('class', 'form-control');
+$role->setAttribute('placeholder', 'role');
+
+
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('users', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+
+
+
+
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+<div class="form-group">
+    <?= $this->formLabel($name) ?>
+    <?= $this->formElement($name) ?>
+    <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($surname) ?>
+    <?= $this->formElement($surname) ?>
+    <?= $this->formElementErrors()->render($surname, ['class' => 'help-block']) ?>
+</div>
+
+
+<div class="form-group">
+    <?= $this->formLabel($email) ?>
+    <?= $this->formElement($email) ?>
+    <?= $this->formElementErrors()->render($email, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($role) ?>
+    <?= $this->formElement($role) ?>
+    <?= $this->formElementErrors()->render($role, ['class' => 'help-block']) ?>
+</div>
+
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
