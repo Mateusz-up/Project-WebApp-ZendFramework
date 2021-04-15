@@ -1,2 +1,2 @@
 # Project-WebApp-ZendFramework
-Projekt studencki w zend framework
+Student project in zend framework
